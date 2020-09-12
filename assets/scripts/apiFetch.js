@@ -45,7 +45,7 @@ function restaurantSearch(term, lat, lon) {
         },
     })
         .then((response) => {
-            console.dir(response.data);
+            console.log(response.data.restaurants[0].restaurant.name);
         })
         .catch((error) => {
             console.log(error);
