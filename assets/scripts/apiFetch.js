@@ -1,6 +1,8 @@
-function apiFetch() {
-    brewerySearch("phoenix", "arizona");
-}
+
+var cityNameEl = document.querySelector("#city-name");
+var stateNameEl = document.querySelector("#state-name");
+var inputEL = document.querySelector("#input-group");
+
 
 function brewerySearch(city, state) {
     axios({
@@ -52,4 +54,27 @@ function restaurantSearch(term, lat, lon) {
         });
 }
 
-apiFetch();
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+    var city = cityNameEl.value;
+    var state = stateNameEl.value;
+    
+
+    if (city, state) {
+        console.log(city, state);
+        brewerySearch(city, state);
+        cityNameEl.value = "";
+        
+        
+
+    }
+    else{
+        alert("Please enter a city and state");
+    }
+};
+
+
+
+inputEL.addEventListener("submit", formSubmitHandler);
+
+
