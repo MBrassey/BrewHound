@@ -1,5 +1,6 @@
 # Brew-Hound
-rough edit NEEDS SCREENSHOT + LINK
+**rough edit NEEDS SCREENSHOT + LINK**
+
   What are we? What is our purpose and promise?</br>
  
  We're glad you asked! We are a website that allows users to easily find local breweries in your area! Simple as that. </br>
