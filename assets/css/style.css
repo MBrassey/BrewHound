@@ -3,3 +3,19 @@
     --subHeader-color: rgba(236, 157, 0);
     --text-color:rgba(223, 141, 3);
 }
+#company-name {
+    color: var(--header-color);
+}
+#slogan {
+    color: var(--subHeader-color);
+}
+#div-headers {
+    color: var(--subHeader-color);
+}
+
+div p{
+    color: var(--text-color);
+}
+article p {
+    color: var(--text-color);
+}
