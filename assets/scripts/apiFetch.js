@@ -11,16 +11,10 @@ let map;
 // main body function
 function brewerySearch(city, state) {
     axios.get("https://api.openbrewerydb.org/breweries?per_page=8&by_city=" + city + "&by_state=" + state + "&sort=-name")
-        // Adds the response.data to brewData function
-        .then(response => brewData(response))
+        // Adds the response to brewCards function
+        .then(response => brewCards(response))
         .catch(error => console.log(error));
 }
-
-// Allows data to be used in HTML by using the response from fetch
-function brewData(response) {
-    brewCards(response)
-}
-
 
 // Creates cards based on response from API fetch
 function brewCards(response) {
