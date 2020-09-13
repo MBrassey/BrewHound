@@ -1,8 +1,6 @@
-
 var cityNameEl = document.querySelector("#city-name");
 var stateNameEl = document.querySelector("#state-name");
 var inputEL = document.querySelector("#input-group");
-
 
 function brewerySearch(city, state) {
     axios({
@@ -47,6 +45,7 @@ function restaurantSearch(term, lat, lon) {
         },
     })
         .then((response) => {
+            console.dir(reponse.data);
             console.log(response.data.restaurants[0].restaurant.name);
         })
         .catch((error) => {
@@ -54,27 +53,18 @@ function restaurantSearch(term, lat, lon) {
         });
 }
 
-var formSubmitHandler = function(event) {
+var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = cityNameEl.value;
     var state = stateNameEl.value;
-    
 
-    if (city, state) {
+    if ((city, state)) {
         console.log(city, state);
         brewerySearch(city, state);
         cityNameEl.value = "";
-        
-        
-
-    }
-    else{
+    } else {
         alert("Please enter a city and state");
     }
 };
 
-
-
 inputEL.addEventListener("submit", formSubmitHandler);
-
-
