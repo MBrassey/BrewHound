@@ -53,3 +53,8 @@
 #input-header {
     color: var(--subHeader-color);
 }
+
+#map {
+    width:80%;
+    height: 50%;
+}
