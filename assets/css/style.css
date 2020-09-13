@@ -1,12 +1,11 @@
 :root {
     --header-color: rgb(246, 193, 1);
     --subHeader-color: rgba(236, 157, 0);
-    --text-color:rgba(223, 141, 3);
+    --text-color: rgba(223, 141, 3);
 }
-.subtitle{
+.subtitle {
     color: var(--text-color);
 }
-
 
 .placeHolder {
     background-color: var(--Stone);
@@ -41,8 +40,6 @@
     color: var(--text-color);
 }
 
-
-
 #company-name {
     color: var(--header-color);
 }
@@ -54,7 +51,5 @@
 }
 
 #input-header {
-    color: var(--subHeader-color)
+    color: var(--subHeader-color);
 }
-
-

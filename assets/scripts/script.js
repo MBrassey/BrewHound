@@ -43,19 +43,18 @@ var presentStoredCities = function (cityName) {
     // Present Newest Search on Top
     const reversed = storedCities; //.reverse();
 
-
-        // Present UpTo 8 Stored Cities
-        if (reversed.length < 8) {
-            // Present 8 storedCities
-            $.each(reversed, function (key, value) {
-                $("#cityContainer").append('<div id="' + value + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + value + "</span></div>");
-            });
-        } else {
-            var times = 8;
-            for (var i = 0; i < times; i++) {
-                $("#cityContainer").append('<div id="' + reversed[i] + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + reversed[i] + "</span></div>");
-            }
+    // Present UpTo 8 Stored Cities
+    if (reversed.length < 8) {
+        // Present 8 storedCities
+        $.each(reversed, function (key, value) {
+            $("#cityContainer").append('<div id="' + value + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + value + "</span></div>");
+        });
+    } else {
+        var times = 8;
+        for (var i = 0; i < times; i++) {
+            $("#cityContainer").append('<div id="' + reversed[i] + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + reversed[i] + "</span></div>");
         }
+    }
 
     // Make List of All ".cityButton" Elements
     var cityButtons = document.querySelectorAll(".cityButton");
@@ -71,7 +70,8 @@ var presentStoredCities = function (cityName) {
     });
 };
 
-var presentData = function (cityName) { // Capture More Data Later
+var presentData = function (cityName) {
+    // Capture More Data Later
     // Run Store & Present Functions for New City
     storeCity(cityName);
     presentStoredCities(cityName);
@@ -118,8 +118,7 @@ var presentData = function (cityName) { // Capture More Data Later
             },
         });
     });
-
-}
+};
 
 $("#trash").droppable({
     // Configure Droppable Trash Element Behaviour
