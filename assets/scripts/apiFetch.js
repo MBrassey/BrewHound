@@ -64,6 +64,7 @@ var formSubmitHandler = function(event) {
         console.log(city, state);
         brewerySearch(city, state);
         cityNameEl.value = "";
+        stateNameEl.value = "";
         
         
 
