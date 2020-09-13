@@ -1,6 +1,7 @@
 var cityNameEl = document.querySelector("#city-name");
 var stateNameEl = document.querySelector("#state-name");
 var inputEL = document.querySelector("#input-group");
+var cardContainerEl = document.querySelector("#card-container")
 
 // defines map for google API
 let map;
@@ -10,28 +11,67 @@ let map;
 function brewerySearch(city, state) {
     axios.get("https://api.openbrewerydb.org/breweries?per_page=8&by_city=" + city + "&by_state=" + state + "&sort=-name")
         // Adds the response.data to brewData function
-        .then(response => brewData(response.data))
+        .then(response => brewData(response))
         .catch(error => console.log(error));
 }
 
 // Allows data to be used in HTML by using the response from fetch
 function brewData(response) {
     brewCards(response)
-
-    // will turn map function to event listener later
-    parsedLat = parseFloat(response.data[0].latitude);
-    parsedLon = parseFloat(response.data[0].longitude);
-    initMap(parsedLat, parsedLon)
 }
 
 
 // Creates cards based on response from API fetch
 function brewCards(response) {
-    console.log(response.data)
-    /* 
-    Needs to create 8 card elements in the "Current City" box that can be clickable to show a map
-    Cards will have to contain data-* values to match latitude and longitude in order to pipe it into the Gmap 
-    */
+    // empties cards
+    cardContainerEl.textContent = "";
+
+    for (i = 0; i < response.data.length; i++) {
+        const cardEl = document.createElement("div");
+        cardEl.className = "card";
+        cardEl.setAttribute("data-lat", response.data[i].latitude);
+        cardEl.setAttribute("data-lon", response.data[i].longitude)
+
+        const cardContent = document.createElement("div");
+        cardContent.className = "card-content";
+        // need to add element to change background photo
+        cardEl.appendChild(cardContent);
+
+        const breweryType = document.createElement("p");
+        breweryType.classList = "subtitle mt-5";
+        breweryType.textContent = response.data[i].brewery_type;
+        cardContent.appendChild(breweryType);
+
+        const footerEl = document.createElement("footer");
+        footerEl.className = "card-footer";
+
+        const brewNameEl = document.createElement("p");
+        brewNameEl.className = "card-footer-item";
+        brewNameEl.textContent = response.data[i].name;
+        footerEl.appendChild(brewNameEl);
+
+        const favoriteEl = document.createElement("a");
+        favoriteEl.className = "card-footer-item";
+        favoriteEl.setAttribute("href", "#");
+        favoriteEl.textContent = "save";
+
+        footerEl.appendChild(favoriteEl);
+        cardEl.appendChild(footerEl);
+        cardContainerEl.appendChild(cardEl);
+    }
+}
+
+// event listener for cards
+function showMap(event) {
+
+    // makes sure parent element has card class
+    if (event.target.closest('.card')) {
+        // parses the data attribute for latitude and longitude to a float
+        var dataLat = parseFloat((event.target.closest('.card').getAttribute("data-lat")));
+        var dataLon = parseFloat((event.target.closest('.card').getAttribute("data-lon")));
+        // applies float data to initMap()
+        initMap(dataLat, dataLon)
+    }
 }
 
 // Creates map based on brewData values
@@ -61,3 +101,4 @@ var formSubmitHandler = function (event) {
 
 // event listener to run on submit click
 inputEL.addEventListener("submit", formSubmitHandler);
+cardContainerEl.addEventListener("click", showMap);
