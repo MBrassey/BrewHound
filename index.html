@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css"/>
     <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>Brew-Hound</title>
@@ -101,15 +100,10 @@
                   
                   </div>
                 </form>
-                <div class="content mt-3">
-                    <button class="button is-large is-fullwidth mt-3">History Item</button>
-                    <button class="button is-large is-fullwidth mt-3">History Item</button>
-                    <button class="button is-large is-fullwidth mt-3">History Item</button>
-                    <button class="button is-large is-fullwidth mt-3">History Item</button>
-                    <button class="button is-large is-fullwidth mt-3">History Item</button>
-                
-                  
-                </div>
+                <div id="cityContainer" class="content mt-3"></div>
+                <div id="trash" class="mt-auto overflow-hidden">
+                  <div class="w-100 p-3 text-center bottom-trash"><span class="oi oi-trash mx-auto mb-4"></span><i class="fa fa-trash" aria-hidden="true"></i></div>
+              </div>
               </div>
               </article>
 
@@ -144,8 +138,12 @@
     <p>Created by, Matthew Ondrovic, Matthew Brassey, Ryan Brown, Taylor Stern</p>
   </div>
 </footer>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="./assets/scripts/script.js"></script>
 <script src="./assets/scripts/apiFetch.js"></script>
 </body>

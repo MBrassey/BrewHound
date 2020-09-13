@@ -6,6 +6,43 @@
 .subtitle{
     color: var(--text-color);
 }
+
+
+.placeHolder {
+    background-color: var(--Stone);
+    margin-top: 20px;
+    min-height: 50px;
+    min-width: 100%;
+    border: 2px dashed var(--Azure);
+    border-radius: 12px;
+}
+
+.bottom-trash {
+    opacity: 0;
+    color: var(--header-color);
+    font-size: 7rem;
+    font-family: "Staatliches", sans-serif;
+    background-color: none;
+    padding-top: 40px;
+    padding-left: 30%;
+
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+    -ms-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in;
+}
+
+.bottom-trash-drag {
+    opacity: 1;
+}
+
+.bottom-trash-active {
+    color: var(--text-color);
+}
+
+
+
 #company-name {
     color: var(--header-color);
 }

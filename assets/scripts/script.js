@@ -1,17 +1,156 @@
-var logCity = function (userCity) {
-    console.log(userCity);
+var todaysDate = moment().format("L");
+
+var searchFormEl = document.querySelector("#input-group");
+
+var searchCityEl = document.querySelector("#city-name");
+
+var cities = {};
+
+var formSubmitHandler = function (event) {
+    event.preventDefault();
+
+    // Get Search Terms
+    var cityName0 = searchCityEl.value.trim();
+    const cityName = cityName0.charAt(0).toUpperCase() + cityName0.slice(1);
+
+    if (cityName) {
+        presentData(cityName);
+        searchCityEl.value = "";
+    } else {
+        alert("Please enter a City");
+    }
+};
+
+var storeCity = function (cityName) {
+    // Structure the Cities Array
+    var cities = [];
+    cities = JSON.parse(localStorage.getItem("city")) || [];
+
+    // Push City to LocalStorage if Not Already Present
+    cities.indexOf(cityName) === -1 ? cities.unshift(cityName) : console.log(cityName + " is already stored.");
+
+    // Sanitize JSON
+    localStorage.setItem("city", JSON.stringify(cities));
+};
+
+var presentStoredCities = function (cityName) {
+    // Load "storedCities" from LocalStorage
+    var storedCities = JSON.parse(localStorage.getItem("city"));
+
+    // Clear Saved Searches Container
+    $("#cityContainer").empty();
+
+    // Present Newest Search on Top
+    const reversed = storedCities; //.reverse();
+
+
+        // Present UpTo 8 Stored Cities
+        if (reversed.length < 8) {
+            // Present 8 storedCities
+            $.each(reversed, function (key, value) {
+                $("#cityContainer").append('<div id="' + value + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + value + "</span></div>");
+            });
+        } else {
+            var times = 8;
+            for (var i = 0; i < times; i++) {
+                $("#cityContainer").append('<div id="' + reversed[i] + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + reversed[i] + "</span></div>");
+            }
+        }
+
+    // Make List of All ".cityButton" Elements
+    var cityButtons = document.querySelectorAll(".cityButton");
+
+    // Append onClick Listener for Each Saved City Presented
+    cityButtons.forEach(function (cityBtn) {
+        cityBtn.addEventListener("click", function (event) {
+            var loadCity = event.target.innerText;
+            if (loadCity) {
+                console.log(loadCity + " was clicked!");
+            }
+        });
+    });
+};
+
+var presentData = function (cityName) { // Capture More Data Later
+    // Run Store & Present Functions for New City
+    storeCity(cityName);
+    presentStoredCities(cityName);
+
+    // Make "cityContainer" Buttons Sortable
+    $(function () {
+        $("#cityContainer").sortable({
+            placeholder: "placeHolder",
+            connectWith: $(".drags"),
+            scroll: false,
+            tolerance: "pointer",
+            activate: function (event) {
+                console.log("activate", this);
+                $(this).addClass("dropover");
+                $(".bottom-trash").addClass("bottom-trash-drag");
+            },
+            deactivate: function (event) {
+                console.log("deactivate", this);
+                $(this).removeClass("dropover");
+                $(".bottom-trash").removeClass("bottom-trash-drag");
+            },
+            over: function (event) {
+                console.log("over", event.target);
+                $(this).addClass("dropover-active");
+            },
+            out: function (event) {
+                console.log("out", event.target);
+                $(this).removeClass("dropover-active");
+            },
+            update: function () {
+                // When User Drops Button, Save New Sort Order to LocalStorage
+                var sortedArr = [];
+                $(this)
+                    .children()
+                    .each(function () {
+                        var citiesSorted = $(this).find("span").text().trim();
+                        sortedArr.push(citiesSorted);
+                        console.log(citiesSorted);
+                    });
+
+                // Overwrite Previous Array With New Sort Order
+                cities = sortedArr;
+                localStorage.setItem("city", JSON.stringify(cities));
+            },
+        });
+    });
+
 }
 
-var geoLocate = function () {
+$("#trash").droppable({
+    // Configure Droppable Trash Element Behaviour
+    accept: ".drag",
+    tolerance: "touch",
+    drop: function (event, ui) {
+        //console.log("drop");
+        ui.draggable.remove();
+        $(".bottom-trash").removeClass("bottom-trash-active");
+    },
+    over: function (event, ui) {
+        //console.log("over");
+        $(".bottom-trash").addClass("bottom-trash-active");
+    },
+    out: function (event, ui) {
+        //console.log("out")
+        $(".bottom-trash").removeClass("bottom-trash-active");
+    },
+});
+
+var initial = function () {
     // Geo Locate User's City Without User Interaction
-    console.log("User Info:");
+    console.log("Your IP, Location Etc:");
     $.get(
         "https://ipinfo.io",
         function (response) {
-            logCity(response.city);
+            presentData(response.city);
         },
         "jsonp"
     );
 };
 
-geoLocate();
+initial();
+searchFormEl.addEventListener("submit", formSubmitHandler);
