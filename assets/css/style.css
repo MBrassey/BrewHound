@@ -1,0 +1,19 @@
+:root {
+    --header-color: rgb(246, 193, 1);
+    --subHeader-color: rgba(236, 157, 0);
+    --text-color:rgba(223, 141, 3);
+}
+.subtitle{
+    color: var(--text-color);
+}
+#company-name {
+    color: var(--header-color);
+}
+#slogan {
+    color: var(--subHeader-color);
+}
+.div-headers {
+    color: var(--subHeader-color);
+}
+
+
