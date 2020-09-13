@@ -16,4 +16,8 @@
     color: var(--subHeader-color);
 }
 
+#input-header {
+    color: var(--subHeader-color)
+}
+
 
