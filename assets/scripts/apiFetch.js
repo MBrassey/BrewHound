@@ -2,6 +2,7 @@ var cityNameEl = document.querySelector("#city-name");
 var stateNameEl = document.querySelector("#state-name");
 var inputEL = document.querySelector("#input-group");
 var cardContainerEl = document.querySelector("#card-container")
+var currentCityEl = document.querySelector("#current-city")
 
 // defines map for google API
 let map;
@@ -90,7 +91,10 @@ var formSubmitHandler = function (event) {
 
     if ((city, state)) {
         console.log(city, state);
+        // Updates current city text
+        currentCityEl.textContent = city + ", " + state;
         brewerySearch(city, state);
+        // Empties search parameters
         cityNameEl.value = "";
         stateNameEl.value = "";
     } else {
