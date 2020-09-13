@@ -2,7 +2,9 @@ var cityNameEl = document.querySelector("#city-name");
 var stateNameEl = document.querySelector("#state-name");
 var inputEL = document.querySelector("#input-group");
 
+
 function brewerySearch(city, state) {
+    window.brewName = [];
     axios({
         method: "GET",
         url:
@@ -16,25 +18,28 @@ function brewerySearch(city, state) {
         },
     })
         .then((response) => {
-            console.log(response.data);
-            for (i = 0; i < response.data.length; i++)
-                restaurantSearch(
-                    response.data[i].name,
-                    response.data[i].latitude,
-                    response.data[i].longitude
-                );
+            for (i = 0; i < response.data.length; i++) {
+                var searchTerm = response.data[i].name;
+                brewName.push(searchTerm)
+            }
+            console.log(brewName);
+            locationSearch(
+                response.data[0].city,
+                response.data[0].latitude,
+                response.data[0].longitude
+            );
         })
         .catch((error) => {
             console.log(error);
         });
 }
 
-function restaurantSearch(term, lat, lon) {
+function locationSearch(city, lat, lon) {
     axios({
         method: "GET",
         url:
-            "https://developers.zomato.com/api/v2.1/search?q=" +
-            term +
+            "https://developers.zomato.com/api/v2.1/locations?query=" +
+            city +
             "&lat=" +
             lat +
             "&lon=" +
@@ -45,8 +50,38 @@ function restaurantSearch(term, lat, lon) {
         },
     })
         .then((response) => {
-            console.dir(reponse.data);
-            console.log(response.data.restaurants[0].restaurant.name);
+            entityID = response.data.location_suggestions[0].entity_id;
+            entityType = response.data.location_suggestions[0].entity_type;
+            for (i = 0; i < brewName.length; i++) {
+                restaurantSearch(
+                    entityID,
+                    entityType,
+                    brewName[i]
+                )
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+function restaurantSearch(cityID, locationType, term) {
+    axios({
+        method: "GET",
+        url:
+            "https://developers.zomato.com/api/v2.1/search?entity_id=" +
+            cityID +
+            "&entity_type=" +
+            locationType +
+            "&q=" +
+            term,
+        headers: {
+            "user-key": "fbb75db1bb45da2de29201a9a3f9cead",
+            "content-type": "application/json",
+        },
+    })
+        .then((response) => {
+            console.dir(response.data);
         })
         .catch((error) => {
             console.log(error);

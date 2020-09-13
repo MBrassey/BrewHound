@@ -14,4 +14,4 @@ var geoLocate = function () {
     );
 };
 
-geoLocate();
+// geoLocate();
