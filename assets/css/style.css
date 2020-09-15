@@ -1,5 +1,5 @@
 :root {
-    --header-color: rgb(246, 193, 1);
+    --header-color: rgba(246, 193, 1);
     --subHeader-color: rgba(236, 157, 0);
     --text-color: rgba(223, 141, 3);
 }
@@ -53,8 +53,12 @@
 #input-header {
     color: var(--subHeader-color);
 }
+footer {
+    text-align: center;
+    justify-content: space-between;
+}
 
 #map {
-    width:80%;
-    height: 50%;
+    width:600px;
+    height:600px;
 }
