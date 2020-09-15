@@ -80,9 +80,21 @@ function initMap(latitude, longitude) {
 // submit handler to start main script body
 var formSubmitHandler = function (event) {
     event.preventDefault();
-    var city = cityNameEl.value;
-    var state = stateNameEl.value;
+    var city = cityNameEl.value.trim();
+    var state = stateNameEl.value.trim();
 
+    // formats text to work better with local storage
+    const cityName = city.charAt(0).toUpperCase() + city.slice(1);
+
+    // runs local storage from script.js file when submit handler is ran
+    if (cityName) {
+        presentData(cityName);
+        cityNameEl.value = "";
+    } else {
+        alert("Please enter a City");
+    }
+
+    // runs main bods of script
     if ((city, state)) {
         console.log(city, state);
         // Updates current city text

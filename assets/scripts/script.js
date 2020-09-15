@@ -1,25 +1,22 @@
 var todaysDate = moment().format("L");
-
 var searchFormEl = document.querySelector("#input-group");
-
-var searchCityEl = document.querySelector("#city-name");
-
 var cities = {};
 
-var formSubmitHandler = function (event) {
-    event.preventDefault();
+// Old code before merge
+// var formSubmitHandler = function (event) {
+//     event.preventDefault();
 
-    // Get Search Terms
-    var cityName0 = searchCityEl.value.trim();
-    const cityName = cityName0.charAt(0).toUpperCase() + cityName0.slice(1);
+//     // Get Search Terms
+//     var cityName0 = searchCityEl.value.trim();
+//     const cityName = cityName0.charAt(0).toUpperCase() + cityName0.slice(1);
 
-    if (cityName) {
-        presentData(cityName);
-        searchCityEl.value = "";
-    } else {
-        alert("Please enter a City");
-    }
-};
+//     if (cityName) {
+//         presentData(cityName);
+//         searchCityEl.value = "";
+//     } else {
+//         alert("Please enter a City");
+//     }
+// };
 
 var storeCity = function (cityName) {
     // Structure the Cities Array
@@ -152,4 +149,3 @@ var initial = function () {
 };
 
 initial();
-searchFormEl.addEventListener("submit", formSubmitHandler);
