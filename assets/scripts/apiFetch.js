@@ -6,6 +6,10 @@ var currentCityEl = document.querySelector("#current-city")
 
 // defines map for google API
 let map;
+let geocoder;
+
+var city;
+var state;
 
 
 // main body function
@@ -26,7 +30,8 @@ function brewCards(response) {
         cardEl.className = "card mt-3";
         cardEl.style.textTransform = "capitalize";
         cardEl.setAttribute("data-lat", response.data[i].latitude);
-        cardEl.setAttribute("data-lon", response.data[i].longitude)
+        cardEl.setAttribute("data-lon", response.data[i].longitude);
+        cardEl.setAttribute("data-addr", response.data[i].street);
 
         const cardContent = document.createElement("div");
         cardContent.className = "card-content is-dark";
@@ -62,16 +67,40 @@ function showMap(event) {
 
     // makes sure parent element has card class
     if (event.target.closest('.card')) {
+
         // parses the data attribute for latitude and longitude to a float
         var dataLat = parseFloat((event.target.closest('.card').getAttribute("data-lat")));
         var dataLon = parseFloat((event.target.closest('.card').getAttribute("data-lon")));
-        // applies float data to initMap()
-        initMap(dataLat, dataLon)
-    }
+        var dataAddr = event.target.closest('.card').getAttribute("data-addr");
+        var fullAddr = dataAddr + ", " + city + ", " + state;
+
+        // checks to see if there are null values for lat and longitude.
+        if (isNaN(dataLat) || isNaN(dataLon)) {
+            // if there are null lat/lon values, checks to see if there's a blank address value
+            if (dataAddr == "") {
+                // cannot pull map due to no data
+                console.log("Sorry we can't get that map");
+                // runs map using street address rather than lat/lon
+            } else {
+                // sets map to 0, 0 because there's a NaN value in the lat/lon
+                initMap(0, 0);
+                // gets geocode location based on address
+                geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'address': fullAddr }, function (results) {
+                    // reassigns google map
+                    map.setCenter(results[0].geometry.location);
+                });
+            };
+            // runs map normally
+        } else {
+            initMap(dataLat, dataLon);
+        };
+    };
 }
 
 // Creates map based on brewData values
 function initMap(latitude, longitude) {
+    // tries lat and lon first by seeing if there's no address value
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: latitude, lng: longitude },
         zoom: 18
@@ -81,8 +110,8 @@ function initMap(latitude, longitude) {
 // submit handler to start main script body
 var formSubmitHandler = function (event) {
     event.preventDefault();
-    var city = cityNameEl.value.trim();
-    var state = stateNameEl.value.trim();
+    city = cityNameEl.value.trim();
+    state = stateNameEl.value.trim();
 
     // formats text to work better with local storage
     const cityName = city.charAt(0).toUpperCase() + city.slice(1);
