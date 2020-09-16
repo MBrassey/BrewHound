@@ -86,7 +86,12 @@ function showMap(event) {
                 geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ address: fullAddr }, function (results) {
                     // reassigns google map
+                    if (results[0]) {
                     map.setCenter(results[0].geometry.location);
+                    } else {
+                        console.log("Nothing Selected.");
+                    }
+
                 });
             }
             // runs map normally
