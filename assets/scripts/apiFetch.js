@@ -3,7 +3,8 @@ var stateNameEl = document.querySelector("#state-name");
 var inputEL = document.querySelector("#input-group");
 var cardContainerEl = document.querySelector("#card-container");
 var currentCityEl = document.querySelector("#current-city");
-
+var modal = document.querySelector(".modal");
+var close = document.querySelector(".close");
 // defines map for google API
 let map;
 let geocoder;
@@ -119,7 +120,7 @@ var formSubmitHandler = function (event) {
         presentData(cityName + ", " + state);
         cityNameEl.value = "";
     } else {
-        alert("Please enter a City");
+        modal.style.display = 'block';
     }
 
     // runs main bods of script
@@ -133,10 +134,13 @@ var formSubmitHandler = function (event) {
         cityNameEl.value = "";
         stateNameEl.value = "";
     } else {
-        alert("Please enter a city and state");
+        modal.style.display = 'block';
     }
 };
 
 // event listener to run on submit click
 inputEL.addEventListener("submit", formSubmitHandler);
 cardContainerEl.addEventListener("click", showMap);
+close.addEventListener('click', function () { 
+modal.style.display = 'none' 
+}); 

@@ -78,3 +78,6 @@ footer {
 #beerIcon {
     color: var(--subHeader-color);
 }
+.modal-background{
+    color: var(--header-color)
+}
