@@ -7,7 +7,7 @@
  Our purpose and promise? We take the hassle out of searching and comparing breweries and we handle that, and we promise to give you<br>
  the best and local results to get you on your way!
  
- 
+ ![image](./assets/images/Application-screenshot.png)
  
  Brought to you by the following creators,</br>
  Matthew Ondrovic, creator of ---</br>
