@@ -23,27 +23,28 @@ function brewCards(response) {
 
     for (i = 0; i < response.data.length; i++) {
         const cardEl = document.createElement("div");
-        cardEl.className = "card";
+        cardEl.className = "card mt-3";
+        cardEl.style.textTransform = "capitalize";
         cardEl.setAttribute("data-lat", response.data[i].latitude);
         cardEl.setAttribute("data-lon", response.data[i].longitude)
 
         const cardContent = document.createElement("div");
-        cardContent.className = "card-content";
+        cardContent.className = "card-content is-dark";
         // need to add element to change background photo
         cardEl.appendChild(cardContent);
 
-        const breweryType = document.createElement("p");
-        breweryType.classList = "subtitle mt-5";
-        breweryType.textContent = response.data[i].brewery_type;
-        cardContent.appendChild(breweryType);
+        const brewNameEl = document.createElement("p");
+        brewNameEl.className = "subtitle mt-5";
+        brewNameEl.textContent = response.data[i].name;
+        cardContent.appendChild(brewNameEl);
 
         const footerEl = document.createElement("footer");
         footerEl.className = "card-footer";
 
-        const brewNameEl = document.createElement("p");
-        brewNameEl.className = "card-footer-item";
-        brewNameEl.textContent = response.data[i].name;
-        footerEl.appendChild(brewNameEl);
+        const breweryType = document.createElement("p");
+        breweryType.classList = "card-footer-item brew-name";
+        breweryType.textContent = response.data[i].brewery_type;
+        footerEl.appendChild(breweryType);
 
         const favoriteEl = document.createElement("a");
         favoriteEl.className = "card-footer-item";
@@ -99,6 +100,7 @@ var formSubmitHandler = function (event) {
         console.log(city, state);
         // Updates current city text
         currentCityEl.textContent = city + ", " + state;
+        currentCityEl.style.textTransform = "capitalize";
         brewerySearch(city, state);
         // Empties search parameters
         cityNameEl.value = "";

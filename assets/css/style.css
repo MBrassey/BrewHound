@@ -62,3 +62,13 @@ footer {
     width:600px;
     height:600px;
 }
+.card {
+    background-color: #4a4a4a;
+}
+.brew-name{
+    color: var(--header-color);
+}
+
+a{
+    color: var(--header-color);
+}
