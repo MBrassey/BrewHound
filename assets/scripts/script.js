@@ -45,7 +45,11 @@ var presentStoredCities = function () {
             cityBtn.addEventListener("click", function (event) {
                 var loadCity = event.target.innerText;
                 if (loadCity) {
-                    console.log(loadCity + " was clicked!");
+                    city = loadCity.substring(0, loadCity.indexOf(", "));
+                    state = loadCity.substring(loadCity.indexOf(" ") + 1);
+                    brewerySearch(city, state);
+                    $("#current-city").empty();
+                    $("#current-city").append(city + ", " + state);
                 }
             });
         });

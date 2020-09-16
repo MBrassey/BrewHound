@@ -87,7 +87,12 @@ function showMap(event) {
                 geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ address: fullAddr }, function (results) {
                     // reassigns google map
+                    if (results[0]) {
                     map.setCenter(results[0].geometry.location);
+                    } else {
+                        console.log("Nothing Selected.");
+                    }
+
                 });
             }
             // runs map normally
@@ -116,7 +121,7 @@ var formSubmitHandler = function (event) {
     const cityName = city.charAt(0).toUpperCase() + city.slice(1);
 
     // runs local storage from script.js file when submit handler is ran
-    if (cityName) {
+    if ((cityName, state)) {
         presentData(cityName + ", " + state);
         cityNameEl.value = "";
     } else {
