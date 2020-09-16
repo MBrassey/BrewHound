@@ -1,5 +1,4 @@
 # Brew-Hound
-**rough edit NEEDS SCREENSHOT + LINK**
 
   What are we? What is our purpose and promise?</br>
  
@@ -9,6 +8,8 @@
  
  ![image](./assets/images/Application-screenshot.png)
  
+  Check it out! - https://ryanabrown14.github.io/brew-hound/ 
+
  Brought to you by the following creators,</br>
  Matthew Ondrovic, creator of ---</br>
  Matthew Brassey, creator of --</br>
