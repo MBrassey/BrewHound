@@ -2,22 +2,6 @@ var todaysDate = moment().format("L");
 var searchFormEl = document.querySelector("#input-group");
 var cities = {};
 
-// Old code before merge
-// var formSubmitHandler = function (event) {
-//     event.preventDefault();
-
-//     // Get Search Terms
-//     var cityName0 = searchCityEl.value.trim();
-//     const cityName = cityName0.charAt(0).toUpperCase() + cityName0.slice(1);
-
-//     if (cityName) {
-//         presentData(cityName);
-//         searchCityEl.value = "";
-//     } else {
-//         alert("Please enter a City");
-//     }
-// };
-
 var storeCity = function (cityName) {
     // Structure the Cities Array
     var cities = [];
@@ -30,54 +14,50 @@ var storeCity = function (cityName) {
     localStorage.setItem("city", JSON.stringify(cities));
 };
 
-var presentStoredCities = function (cityName) {
+var presentStoredCities = function () {
     // Load "storedCities" from LocalStorage
     var storedCities = JSON.parse(localStorage.getItem("city"));
+    if (storedCities) {
+        // Clear Saved Searches Container
+        $("#cityContainer").empty();
 
-    // Clear Saved Searches Container
-    $("#cityContainer").empty();
+        // Present Newest Search on Top
+        const reversed = storedCities; //.reverse();
 
-    // Present Newest Search on Top
-    const reversed = storedCities; //.reverse();
+        // Present UpTo 8 Stored Cities
+        if (reversed.length < 8) {
+            // Present 8 storedCities
+            $.each(reversed, function (key, value) {
+                $("#cityContainer").append('<div id="' + value + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + value + "</span></div>");
+            });
+        } else {
+            var times = 8;
+            for (var i = 0; i < times; i++) {
+                $("#cityContainer").append('<div id="' + reversed[i] + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + reversed[i] + "</span></div>");
+            }
+        }
 
-    // Present UpTo 8 Stored Cities
-    if (reversed.length < 8) {
-        // Present 8 storedCities
-        $.each(reversed, function (key, value) {
-            $("#cityContainer").append('<div id="' + value + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + value + "</span></div>");
+        // Make List of All ".cityButton" Elements
+        var cityButtons = document.querySelectorAll(".cityButton");
+
+        // Append onClick Listener for Each Saved City Presented
+        cityButtons.forEach(function (cityBtn) {
+            cityBtn.addEventListener("click", function (event) {
+                var loadCity = event.target.innerText;
+                if (loadCity) {
+                    console.log(loadCity + " was clicked!");
+                }
+            });
         });
     } else {
-        var times = 8;
-        for (var i = 0; i < times; i++) {
-            $("#cityContainer").append('<div id="' + reversed[i] + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + reversed[i] + "</span></div>");
-        }
+        console.log("No Saved Searches!");
     }
-
-    // Make List of All ".cityButton" Elements
-    var cityButtons = document.querySelectorAll(".cityButton");
-
-    // Append onClick Listener for Each Saved City Presented
-    cityButtons.forEach(function (cityBtn) {
-        cityBtn.addEventListener("click", function (event) {
-            var loadCity = event.target.innerText;
-            if (loadCity) {
-                console.log(loadCity + " was clicked!");
-            }
-        });
-    });
-};
-
-var presentData = function (cityName) {
-    // Capture More Data Later
-    // Run Store & Present Functions for New City
-    storeCity(cityName);
-    presentStoredCities(cityName);
 
     // Make "cityContainer" Buttons Sortable
     $(function () {
         $("#cityContainer").sortable({
             placeholder: "placeHolder",
-            connectWith: $(".drags"),
+            connectWith: $(".drag"),
             scroll: false,
             tolerance: "pointer",
             activate: function (event) {
@@ -117,6 +97,18 @@ var presentData = function (cityName) {
     });
 };
 
+var presentData = function (cityName) {
+    // Capture More Data Later
+    // Run Store & Present Functions for New City
+
+    if (cityName) {
+        storeCity(cityName);
+        presentStoredCities(cityName);
+    } else {
+        presentStoredCities();
+    }
+};
+
 $("#trash").droppable({
     // Configure Droppable Trash Element Behaviour
     accept: ".drag",
@@ -137,15 +129,8 @@ $("#trash").droppable({
 });
 
 var initial = function () {
-    // Geo Locate User's City Without User Interaction
-    console.log("Your IP, Location Etc:");
-    $.get(
-        "https://ipinfo.io",
-        function (response) {
-            presentData(response.city);
-        },
-        "jsonp"
-    );
+    // Present any Stored Searches
+    presentStoredCities();
 };
 
 initial();

@@ -3,6 +3,11 @@
     --subHeader-color: rgba(236, 157, 0);
     --text-color: rgba(223, 141, 3);
 }
+
+a {
+    color: var(--header-color);
+}
+
 .subtitle {
     color: var(--text-color);
 }
@@ -23,7 +28,7 @@
     font-family: "Staatliches", sans-serif;
     background-color: none;
     padding-top: 40px;
-    padding-left: 30%;
+    padding-left: 40%;
 
     -webkit-transition: opacity 1s ease-in;
     -moz-transition: opacity 1s ease-in;
@@ -38,6 +43,13 @@
 
 .bottom-trash-active {
     color: var(--text-color);
+}
+
+.card {
+    background-color: #4a4a4a;
+}
+.brew-name {
+    color: var(--header-color);
 }
 
 #company-name {
@@ -59,16 +71,10 @@ footer {
 }
 
 #map {
-    width:600px;
-    height:600px;
-}
-.card {
-    background-color: #4a4a4a;
-}
-.brew-name{
-    color: var(--header-color);
+    width: 600px;
+    height: 600px;
 }
 
-a{
-    color: var(--header-color);
+#beerIcon {
+    color: var(--subHeader-color);
 }

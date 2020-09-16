@@ -1,8 +1,8 @@
 var cityNameEl = document.querySelector("#city-name");
 var stateNameEl = document.querySelector("#state-name");
 var inputEL = document.querySelector("#input-group");
-var cardContainerEl = document.querySelector("#card-container")
-var currentCityEl = document.querySelector("#current-city")
+var cardContainerEl = document.querySelector("#card-container");
+var currentCityEl = document.querySelector("#current-city");
 
 // defines map for google API
 let map;
@@ -11,13 +11,13 @@ let geocoder;
 var city;
 var state;
 
-
 // main body function
 function brewerySearch(city, state) {
-    axios.get("https://api.openbrewerydb.org/breweries?per_page=8&by_city=" + city + "&by_state=" + state + "&sort=-name")
+    axios
+        .get("https://api.openbrewerydb.org/breweries?per_page=8&by_city=" + city + "&by_state=" + state + "&sort=-name")
         // Adds the response to brewCards function
-        .then(response => brewCards(response))
-        .catch(error => console.log(error));
+        .then((response) => brewCards(response))
+        .catch((error) => console.log(error));
 }
 
 // Creates cards based on response from API fetch
@@ -64,14 +64,12 @@ function brewCards(response) {
 
 // event listener for cards
 function showMap(event) {
-
     // makes sure parent element has card class
-    if (event.target.closest('.card')) {
-
+    if (event.target.closest(".card")) {
         // parses the data attribute for latitude and longitude to a float
-        var dataLat = parseFloat((event.target.closest('.card').getAttribute("data-lat")));
-        var dataLon = parseFloat((event.target.closest('.card').getAttribute("data-lon")));
-        var dataAddr = event.target.closest('.card').getAttribute("data-addr");
+        var dataLat = parseFloat(event.target.closest(".card").getAttribute("data-lat"));
+        var dataLon = parseFloat(event.target.closest(".card").getAttribute("data-lon"));
+        var dataAddr = event.target.closest(".card").getAttribute("data-addr");
         var fullAddr = dataAddr + ", " + city + ", " + state;
 
         // checks to see if there are null values for lat and longitude.
@@ -86,16 +84,16 @@ function showMap(event) {
                 initMap(0, 0);
                 // gets geocode location based on address
                 geocoder = new google.maps.Geocoder();
-                geocoder.geocode({ 'address': fullAddr }, function (results) {
+                geocoder.geocode({ address: fullAddr }, function (results) {
                     // reassigns google map
                     map.setCenter(results[0].geometry.location);
                 });
-            };
+            }
             // runs map normally
         } else {
             initMap(dataLat, dataLon);
-        };
-    };
+        }
+    }
 }
 
 // Creates map based on brewData values
@@ -103,7 +101,7 @@ function initMap(latitude, longitude) {
     // tries lat and lon first by seeing if there's no address value
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: latitude, lng: longitude },
-        zoom: 18
+        zoom: 18,
     });
 }
 
@@ -118,7 +116,7 @@ var formSubmitHandler = function (event) {
 
     // runs local storage from script.js file when submit handler is ran
     if (cityName) {
-        presentData(cityName);
+        presentData(cityName + ", " + state);
         cityNameEl.value = "";
     } else {
         alert("Please enter a City");
@@ -138,7 +136,6 @@ var formSubmitHandler = function (event) {
         alert("Please enter a city and state");
     }
 };
-
 
 // event listener to run on submit click
 inputEL.addEventListener("submit", formSubmitHandler);
