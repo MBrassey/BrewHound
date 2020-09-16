@@ -23,7 +23,8 @@ function brewCards(response) {
 
     for (i = 0; i < response.data.length; i++) {
         const cardEl = document.createElement("div");
-        cardEl.className = "card";
+        cardEl.className = "card mt-3";
+        cardEl.style.textTransform = "capitalize";
         cardEl.setAttribute("data-lat", response.data[i].latitude);
         cardEl.setAttribute("data-lon", response.data[i].longitude)
 
@@ -87,6 +88,7 @@ var formSubmitHandler = function (event) {
         console.log(city, state);
         // Updates current city text
         currentCityEl.textContent = city + ", " + state;
+        currentCityEl.style.textTransform = "capitalize";
         brewerySearch(city, state);
         // Empties search parameters
         cityNameEl.value = "";
