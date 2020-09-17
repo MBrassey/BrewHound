@@ -12,6 +12,6 @@
 
  Brought to you by the following creators,</br>
  Matthew Ondrovic, creator of implementing APIs and handling DOM.</br>
- Matthew Brassey, creator of saved searches to localstorage, draggable/sortable/clickable/deletable buttons, trash can animation & Site Responsiveness.</br>
+ Matthew Brassey, creator of saved searches to LocalStorage, draggable/sortable/clickable/deletable Buttons, trash can Animation & Site Responsiveness.</br>
  Ryan Brown, creator of implementing BULMA into our HTML, styling the dynamically created elements, creating event listeners, creating slideshow format.</br>
  Taylor Stern, creator of broad CSS styling, other visual touch-ups, the README file, and editing slideshow. </br>
