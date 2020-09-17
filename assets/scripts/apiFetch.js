@@ -122,6 +122,7 @@ var formSubmitHandler = function (event) {
 
     // formats text to work better with local storage
     const cityName = city.charAt(0).toUpperCase() + city.slice(1);
+    var state = state.charAt(0).toUpperCase() + state.slice(1);
 
     // runs local storage from script.js file when submit handler is ran
     if ((cityName && state)) {

@@ -46,7 +46,7 @@ var presentStoredCities = function () {
                 var loadCity = event.target.innerText;
                 if (loadCity) {
                     city = loadCity.substring(0, loadCity.indexOf(", "));
-                    state = loadCity.substring(loadCity.indexOf(" ") + 1);
+                    state = loadCity.substring(loadCity.indexOf(", ") + 2);
                     brewerySearch(city, state);
                     $("#current-city").empty();
                     $("#current-city").append(city + ", " + state);
