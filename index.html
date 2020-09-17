@@ -12,6 +12,14 @@
 
     <body>
         <section class="hero is-dark">
+            <header class="navbar">
+              <div class="navbar-menu level">
+                <div class="level-left"></div>
+                <div class="level-right">
+                  <button class="button is-dark is-inverted is-outlined" id="favorite">favorites</button>
+                </div>
+                </div>
+                </header>
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title" id="company-name"><i id="beerIcon" class="fas fa-beer"></i> Brew-Hound</h1>
@@ -153,7 +161,7 @@
             </div>
         </footer>
 
-        <div class="modal">
+        <div class="modal modal-1">
           <div class="modal-background"></div>
           <div class="modal-card">
             <header class="modal-card-head" style="background-color: #4a4a4a;">
@@ -167,6 +175,23 @@
             </footer>
           </div>
         </div>
+
+        <div class="modal modal-2">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head" style="background-color: #4a4a4a;">
+              <p class="modal-card-title div-headers">Your Favourite Breweries!</p>
+            </header>
+            <section class="modal-card-body" id="saved">
+              
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button close-2 is-outlined is-dark">Close</button>
+            </footer>
+          </div>
+        </div>
+
+        
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>

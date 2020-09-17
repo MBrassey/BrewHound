@@ -3,8 +3,11 @@ var stateNameEl = document.querySelector("#state-name");
 var inputEL = document.querySelector("#input-group");
 var cardContainerEl = document.querySelector("#card-container");
 var currentCityEl = document.querySelector("#current-city");
-var modal = document.querySelector(".modal");
+var modal = document.querySelector(".modal-1");
 var close = document.querySelector(".close");
+var modal2 = document.querySelector(".modal-2");
+var close2 = document.querySelector(".close-2");
+var favBtn = document.querySelector("#favorite"); 
 // defines map for google API
 let map;
 let geocoder;
@@ -149,3 +152,10 @@ cardContainerEl.addEventListener("click", showMap);
 close.addEventListener('click', function () { 
 modal.style.display = 'none' 
 }); 
+favBtn.addEventListener('click', 
+function () { 
+modal2.style.display = 'block' 
+}); 
+close2.addEventListener('click', function () { 
+    modal2.style.display = 'none' 
+    }); 
