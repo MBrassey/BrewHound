@@ -28,13 +28,11 @@ var presentStoredCities = function () {
         if (reversed.length < 8) {
             // Present 8 storedCities
             $.each(reversed, function (key, value) {
-               // var value = value.split('_').join(' ');
                 $("#cityContainer").append('<div id="' + value + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + value + "</span></div>");
             });
         } else {
             var times = 8;
             for (var i = 0; i < times; i++) {
-               // var value = value.split('_').join(' ');
                 $("#cityContainer").append('<div id="' + reversed[i] + '" class="button is-large is-fullwidth mt-3 drag"><span class="cityButton">' + reversed[i] + "</span></div>");
             }
         }
@@ -47,8 +45,8 @@ var presentStoredCities = function () {
             cityBtn.addEventListener("click", function (event) {
                 var loadCity = event.target.innerText;
                 if (loadCity) {
-                    city = loadCity.substring(0, loadCity.indexOf(", ")).split('_').join(' ');
-                    state = loadCity.substring(loadCity.indexOf(" ") + 1);
+                    city = loadCity.substring(0, loadCity.indexOf(", "));
+                    state = loadCity.substring(loadCity.indexOf(", ") + 2);
                     brewerySearch(city, state);
                     $("#current-city").empty();
                     $("#current-city").append(city + ", " + state);

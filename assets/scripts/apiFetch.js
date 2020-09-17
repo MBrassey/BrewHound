@@ -114,7 +114,7 @@ function initMap(latitude, longitude) {
 // submit handler to start main script body
 var formSubmitHandler = function (event) {
     event.preventDefault();
-    city = cityNameEl.value.split(' ').join('_').trim();
+    city = cityNameEl.value.trim();
     state = stateNameEl.value.trim();
 
     // formats text to work better with local storage
@@ -131,7 +131,6 @@ var formSubmitHandler = function (event) {
 
     // runs main bods of script
     if ((city && state)) {
-        city = city.split('_').join(' ');
         console.log(city, state);
         // Updates current city text
         currentCityEl.textContent = city + ", " + state;
