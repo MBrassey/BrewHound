@@ -12,6 +12,6 @@
 
  Brought to you by the following creators,</br>
  Matthew Ondrovic, creator of implementing APIs and handling DOM.</br>
- Matthew Brassey, creator of creating localstorage and adding functionality to deleting items.</br>
- Ryan Brown, creator of implementing BULMA into our HTML, styling the dynamically created elements, creating event listeners, creating slideshow format</br>
+ Matthew Brassey, creator of saved search terms to localstorage, draggable/sortable/clickable buttons which can be deleted, trash can animation.</br>
+ Ryan Brown, creator of implementing BULMA into our HTML, styling the dynamically created elements, creating event listeners, creating slideshow format.</br>
  Taylor Stern, creator of broad CSS styling, other visual touch-ups, the README file, and editing slideshow. </br>
