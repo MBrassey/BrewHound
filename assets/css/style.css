@@ -98,7 +98,6 @@ footer {
     }
     .modal {
         max-width: 100%;
-        margin-left: -1.5em;
         padding-left: 0 ;
         padding-right: 0 ;
     }
@@ -138,6 +137,9 @@ footer {
 @media screen and (max-width: 799px) {
     p {
         text-align: center;
+    }
+    .modal {
+        padding-right: 40px;
     }
     .title {
         text-align: center;
