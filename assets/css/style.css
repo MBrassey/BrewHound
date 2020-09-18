@@ -66,6 +66,13 @@ footer {
     color: var(--header-color);
 }
 
+.cityButton, .button {
+    width: 96%;
+    padding: 0px;
+    font-size: 1rem;
+    overflow: hidden;
+}
+
 #company-name {
     color: var(--header-color);
 }
@@ -105,13 +112,6 @@ footer {
         max-width: 100%;
         padding-left: 0;
         padding-right: 0;
-    }
-
-    .cityButton, .button {
-        width: 96%;
-        padding: 0px;
-        font-size: 1rem;
-        overflow: hidden;
     }
 
     .bottom-trash {
