@@ -78,12 +78,14 @@ footer {
     overflow: hidden;
 }
 
+
 #company-name {
     color: var(--header-color);
 }
 
 #slogan {
     color: var(--subHeader-color);
+    font-size: 1.6rem;
 }
 
 #input-header {
@@ -139,10 +141,6 @@ footer {
 
     #search-btn {
         width: 100%;
-    }
-
-    #slogan {
-        font-size: 2rem;
     }
 }
 @media screen and (max-width: 801px) {
