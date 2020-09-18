@@ -86,6 +86,9 @@ footer {
     footer {
         width: 100%;
     }
+    #favorite {
+        float: left;
+    }
     .title {
         width: 100%;
         font-size: 3rem;
