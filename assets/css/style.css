@@ -90,6 +90,7 @@ footer {
 
 #input-header {
     color: var(--subHeader-color);
+    font-size: 1.8rem;
 }
 
 #map {
@@ -143,7 +144,7 @@ footer {
         width: 100%;
     }
 }
-@media screen and (max-width: 801px) {
+@media screen and (max-width: 765px) {
     p {
         text-align: center;
     }
