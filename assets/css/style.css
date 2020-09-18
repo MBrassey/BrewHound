@@ -85,7 +85,9 @@ footer {
 }
 
 #company-name {
+    font-family: 'Allura', cursive;
     color: var(--header-color);
+    font-size: 3.3rem;
 }
 
 #slogan {
@@ -95,7 +97,6 @@ footer {
 
 #input-header {
     color: var(--subHeader-color);
-    font-size: 1.8rem;
 }
 
 #map {
@@ -105,6 +106,8 @@ footer {
 
 #beerIcon {
     color: var(--subHeader-color);
+    font-size: 2.7rem;
+    font-family: 'Allura', cursive;
 }
 
 @media screen and (max-width: 1200px) {
