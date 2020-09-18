@@ -13,6 +13,11 @@ footer {
     justify-content: space-between;
 }
 
+.title {
+    width: 100%;
+    font-size: 3rem;
+}
+
 .subtitle {
     color: var(--text-color);
 }
@@ -97,11 +102,6 @@ footer {
 @media screen and (max-width: 1200px) {
     footer {
         width: 100%;
-    }
-
-    .title {
-        width: 100%;
-        font-size: 3rem;
     }
 
     .subtitle {
