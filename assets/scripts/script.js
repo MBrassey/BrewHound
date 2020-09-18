@@ -62,7 +62,9 @@ var presentStoredCities = function () {
                     brewerySearch(city, state);
                     $("#current-city").empty();
                     $("#current-city").append(city + ", " + state);
-                    smoothScroll2();
+                    if($(window).width() <= 768){
+                        smoothScroll2();
+                      }
                 }
             });
         });

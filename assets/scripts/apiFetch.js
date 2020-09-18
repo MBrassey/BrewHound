@@ -101,7 +101,9 @@ function showMap(event) {
             // runs map normally
         } else {
             initMap(dataLat, dataLon);
-            smoothScroll();
+            if($(window).width() <= 768){
+                smoothScroll();
+              }
         }
     }
 }
