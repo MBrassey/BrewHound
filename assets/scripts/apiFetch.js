@@ -101,6 +101,7 @@ function showMap(event) {
             // runs map normally
         } else {
             initMap(dataLat, dataLon);
+            smoothScroll();
         }
     }
 }

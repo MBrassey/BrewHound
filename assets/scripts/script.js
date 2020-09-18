@@ -2,6 +2,12 @@ var todaysDate = moment().format("L");
 var searchFormEl = document.querySelector("#input-group");
 var cities = {};
 
+var smoothScroll = function() {
+        $('html, body').animate({
+            scrollTop: $("#map").offset().top
+        }, 2000);
+}
+
 var storeCity = function (cityName) {
     // Structure the Cities Array
     var cities = [];
