@@ -73,6 +73,7 @@ function showMap(event) {
         // parses the data attribute for latitude and longitude to a float
         var dataLat = parseFloat(event.target.closest(".card").getAttribute("data-lat"));
         var dataLon = parseFloat(event.target.closest(".card").getAttribute("data-lon"));
+        // var dataName = parseFloat(event.target.closest(".card").getAttribute("data-name"));
         var dataAddr = event.target.closest(".card").getAttribute("data-addr");
         var fullAddr = dataAddr + ", " + city + ", " + state;
 
@@ -101,6 +102,7 @@ function showMap(event) {
             // runs map normally
         } else {
             initMap(dataLat, dataLon);
+            breweryName(fullAddr);
             if($(window).width() <= 768){
                 smoothScroll();
               }
