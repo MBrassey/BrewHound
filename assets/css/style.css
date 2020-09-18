@@ -8,6 +8,16 @@ a {
     color: var(--header-color);
 }
 
+footer {
+    text-align: center;
+    justify-content: space-between;
+}
+
+.title {
+    width: 100%;
+    font-size: 3rem;
+}
+
 .subtitle {
     color: var(--text-color);
 }
@@ -48,107 +58,110 @@ a {
 .card {
     background-color: #4a4a4a;
 }
+
 .brew-name {
     color: var(--header-color);
+}
+
+.div-headers {
+    color: var(--subHeader-color);
+}
+
+.modal-background {
+    color: var(--header-color);
+}
+
+.cityButton, .button {
+    width: 96%;
+    padding: 0px;
+    font-size: 1rem;
+    overflow: hidden;
 }
 
 #company-name {
     color: var(--header-color);
 }
+
 #slogan {
-    color: var(--subHeader-color);
-}
-.div-headers {
     color: var(--subHeader-color);
 }
 
 #input-header {
     color: var(--subHeader-color);
 }
-footer {
-    text-align: center;
-    justify-content: space-between;
-}
 
 #map {
-    width: 600px;
-    height: 600px;
+    width: 100%;
+    height: 68vh;
 }
 
 #beerIcon {
     color: var(--subHeader-color);
-}
-.modal-background {
-    color: var(--header-color);
 }
 
 @media screen and (max-width: 1200px) {
     footer {
         width: 100%;
     }
-    #favorite {
-        float: left;
-    }
-    .title {
-        width: 100%;
-        font-size: 3rem;
-    }
+
     .subtitle {
         width: 100%;
     }
+
     .modal {
         max-width: 100%;
-        margin-left: -1.5em;
-        padding-left: 0 ;
-        padding-right: 0 ;
+        padding-left: 0;
+        padding-right: 0;
     }
-    .cityButton {
-        font-size: 1rem;
-        word-wrap: normal;
-    }
+
     .bottom-trash {
         font-size: 4rem;
         padding-top: 0%;
         padding-left: 46%;
     }
+
+    .card-footer-item {
+        width: 100%;
+    }
+
+    .has-icons-left {
+        width: 100%;
+    }
+
     #input-header {
         width: 100%;
         font-size: 1rem;
     }
-    .has-icons-left {
-        width: 100%;
-    }
+
     #state-name {
         width: 100%;
     }
+
     #search-btn {
         width: 100%;
     }
-    .card-footer-item {
-        width: 100%;
-    }
-    #map {
-        width: 50%;
-        height: 50%;
-    }
+
     #slogan {
         font-size: 2rem;
     }
 }
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 801px) {
     p {
         text-align: center;
     }
+
+    .modal {
+        padding-right: 40px;
+    }
+
     .title {
         text-align: center;
     }
+
     .subtitle {
         text-align: center;
     }
-    #map {
-        width: 100%;
-        height: 375px;
-    }
+
     #input-header {
         font-size: 2rem;
     }
@@ -158,7 +171,7 @@ footer {
         text-align: center;
     }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 505px) {
     .title {
         font-size: 2.6rem;
     }
@@ -168,6 +181,7 @@ footer {
         padding-top: 0%;
         padding-left: 42%;
     }
+
     #input-header {
         font-size: 1.3rem;
     }
