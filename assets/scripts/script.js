@@ -8,6 +8,12 @@ var smoothScroll = function() {
         }, 2000);
 }
 
+var smoothScroll2 = function() {
+    $('html, body').animate({
+        scrollTop: $("#current-city").offset().top
+    }, 2000);
+}
+
 var storeCity = function (cityName) {
     // Structure the Cities Array
     var cities = [];
@@ -56,6 +62,7 @@ var presentStoredCities = function () {
                     brewerySearch(city, state);
                     $("#current-city").empty();
                     $("#current-city").append(city + ", " + state);
+                    smoothScroll2();
                 }
             });
         });
