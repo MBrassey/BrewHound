@@ -94,7 +94,10 @@ footer {
         width: 100%;
     }
     .modal {
-        width: 40%;
+        max-width: 100%;
+        margin-left: -1.5em;
+        padding-left: 0 ;
+        padding-right: 0 ;
     }
     .cityButton {
         font-size: 1rem;

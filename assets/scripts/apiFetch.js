@@ -7,7 +7,7 @@ var modal = document.querySelector(".modal-1");
 var close = document.querySelector(".close");
 var modal2 = document.querySelector(".modal-2");
 var close2 = document.querySelector(".close-2");
-var favBtn = document.querySelector("#favorite"); 
+var favBtn = document.querySelector(".favorite"); 
 // defines map for google API
 let map;
 let geocoder;
