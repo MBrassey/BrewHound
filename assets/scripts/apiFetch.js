@@ -129,6 +129,7 @@ function favoriteSave(e){
 
         favoritesArr.push(cardElements);
 
+        // filters favoritesArr by creating a new map based on uniuqe breweryName
         let filteredList = 
         [...new Map(favoritesArr.map(obj => [`${obj.breweryName}`, obj]))
         .values()
@@ -141,6 +142,7 @@ function favoriteSave(e){
 
 // calls favorites to modal
 function favoriteCall(){
+    modal2Body.innerHTML = "";
     if (localStorage.getItem("cardData")){
         favoritesArr = JSON.parse(localStorage.getItem("cardData"));
 
