@@ -127,9 +127,15 @@ function favoriteSave(e){
             breweryAddr: e.target.closest('.card').getAttribute('data-addr')
         }
 
-        favoritesArr.push(cardElements);     
+        favoritesArr.push(cardElements);
 
-        localStorage.setItem("cardData", JSON.stringify(favoritesArr));
+        let filteredList = 
+        [...new Map(favoritesArr.map(obj => [`${obj.breweryName}`, obj]))
+        .values()
+        ];
+
+        localStorage.setItem("cardData", JSON.stringify(filteredList));
+        favoriteCall();
     };
 }
 
