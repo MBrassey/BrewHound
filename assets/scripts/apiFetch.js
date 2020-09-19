@@ -40,6 +40,7 @@ function brewCards(response) {
         cardEl.setAttribute("data-lat", response.data[i].latitude);
         cardEl.setAttribute("data-lon", response.data[i].longitude);
         cardEl.setAttribute("data-addr", response.data[i].street);
+        cardEl.setAttribute("data-site", response.data[i].website_url);
 
         const cardContent = document.createElement("div");
         cardContent.className = "card-content is-dark";
@@ -49,7 +50,13 @@ function brewCards(response) {
         const brewNameEl = document.createElement("p");
         brewNameEl.className = "subtitle mt-5";
         brewNameEl.textContent = response.data[i].name;
+
+        const brewSiteEl = document.createElement("p");
+        brewSiteEl.className = "subtitle mt-5";
+        brewSiteEl.textContent = response.data[i].website_url;
+
         cardContent.appendChild(brewNameEl);
+        //cardContent.appendChild(brewSiteEl);
 
         const footerEl = document.createElement("footer");
         footerEl.className = "card-footer";
@@ -77,6 +84,12 @@ function showMap(event) {
         // parses the data attribute for latitude and longitude to a float
         var dataLat = parseFloat(event.target.closest(".card").getAttribute("data-lat"));
         var dataLon = parseFloat(event.target.closest(".card").getAttribute("data-lon"));
+        var dataSite = event.target.closest(".card").getAttribute("data-site");
+        //console.log(dataSite);
+        $("#brewerySite").empty();
+        $("#brewerySite").append('<div class="button is-large is-fullwidth mt-3"><a href="' + dataSite + '"><span class="breweryURL">' + dataSite + "</span></a></div>");
+
+
         // var dataName = parseFloat(event.target.closest(".card").getAttribute("data-name"));
         var dataAddr = event.target.closest(".card").getAttribute("data-addr");
         var fullAddr = dataAddr + ", " + city + ", " + state;
