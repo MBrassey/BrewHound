@@ -7,13 +7,17 @@ var modal = document.querySelector(".modal-1");
 var close = document.querySelector(".close");
 var modal2 = document.querySelector(".modal-2");
 var close2 = document.querySelector(".close-2");
-var favBtn = document.querySelector(".favorite"); 
+var favBtn = document.querySelector(".favorite");
+var favListenEl = document.querySelector("#fav-listener")
+var modal2Body = document.querySelector("#fav-brew");
+
 // defines map for google API
 let map;
 let geocoder;
 
 var city;
 var state;
+var favoritesArr = []
 
 // main body function
 function brewerySearch(city, state) {
@@ -56,8 +60,8 @@ function brewCards(response) {
         footerEl.appendChild(breweryType);
 
         const favoriteEl = document.createElement("a");
-        favoriteEl.className = "card-footer-item";
         favoriteEl.setAttribute("href", "#");
+        favoriteEl.classList = "card-footer-item save-btn";
         favoriteEl.textContent = "save";
 
         footerEl.appendChild(favoriteEl);
@@ -69,7 +73,7 @@ function brewCards(response) {
 // event listener for cards
 function showMap(event) {
     // makes sure parent element has card class
-    if (event.target.closest(".card")) {
+    if (event.target.closest(".card")){
         // parses the data attribute for latitude and longitude to a float
         var dataLat = parseFloat(event.target.closest(".card").getAttribute("data-lat"));
         var dataLon = parseFloat(event.target.closest(".card").getAttribute("data-lon"));
@@ -92,7 +96,7 @@ function showMap(event) {
                 geocoder.geocode({ address: fullAddr }, function (results) {
                     // reassigns google map
                     if (results[0]) {
-                    map.setCenter(results[0].geometry.location);
+                        map.setCenter(results[0].geometry.location);
                     } else {
                         console.log("Nothing Selected.");
                     }
@@ -103,11 +107,65 @@ function showMap(event) {
         } else {
             initMap(dataLat, dataLon);
             breweryName(fullAddr);
-            if($(window).width() <= 768){
+            if ($(window).width() <= 768) {
                 smoothScroll();
-              }
+            }
         }
     }
+}
+
+// saves favorites to local storage
+function favoriteSave(e){    
+    if(e.target.classList.contains("save-btn")){
+
+        favoritesArr = JSON.parse(localStorage.getItem("cardData")) || [];
+        var cardElements = {
+            breweryName: e.target.parentNode.previousElementSibling.firstElementChild.innerText,
+            breweryType: e.target.previousElementSibling.innerText,
+            breweryLat: e.target.closest('.card').getAttribute('data-lat'),
+            breweryLon: e.target.closest('.card').getAttribute('data-lon'),
+            breweryAddr: e.target.closest('.card').getAttribute('data-addr')
+        }
+
+        favoritesArr.push(cardElements);     
+
+        localStorage.setItem("cardData", JSON.stringify(favoritesArr));
+    };
+}
+
+// calls favorites to modal
+function favoriteCall(){
+    if (localStorage.getItem("cardData")){
+        favoritesArr = JSON.parse(localStorage.getItem("cardData"));
+
+        for(i = 0; i < favoritesArr.length; i++){
+            // creates individual card elements
+
+            var favoriteCard = document.createElement("div");
+            favoriteCard.classList = "card mt-3";
+            favoriteCard.setAttribute("data-lat", favoritesArr[i].breweryLat);
+            favoriteCard.setAttribute("data-lon", favoritesArr[i].breweryLon);
+            favoriteCard.setAttribute("data-addr", favoritesArr[i].breweryAddr);
+
+            var favoriteContent = document.createElement("div");
+            favoriteContent.className = "card-content";
+            
+            var favoriteSubtitle = document.createElement("p");
+            favoriteSubtitle.classList = "subtitle mt-5";
+            favoriteSubtitle.innerText = favoritesArr[i].breweryName;
+
+            var favoriteType = document.createElement("p");
+            favoriteType.classList = "brew-name";
+            favoriteType.innerText = favoritesArr[i].breweryType;
+
+            // assembles card
+            favoriteContent.appendChild(favoriteSubtitle);
+            favoriteContent.appendChild(favoriteType);
+            favoriteCard.appendChild(favoriteContent);
+
+            modal2Body.appendChild(favoriteCard);
+        };
+    };
 }
 
 // Creates map based on brewData values
@@ -152,16 +210,27 @@ var formSubmitHandler = function (event) {
     }
 };
 
+// ----- EVENT LISTENER START -----
+
 // event listener to run on submit click
 inputEL.addEventListener("submit", formSubmitHandler);
 cardContainerEl.addEventListener("click", showMap);
-close.addEventListener('click', function () { 
-modal.style.display = 'none' 
-}); 
-favBtn.addEventListener('click', 
-function () { 
-modal2.style.display = 'block' 
-}); 
-close2.addEventListener('click', function () { 
-    modal2.style.display = 'none' 
-    }); 
+
+// event listener to save favorites
+cardContainerEl.addEventListener("click", favoriteSave);
+
+// modal event listner to close
+close.addEventListener('click', function () {
+    modal.style.display = 'none'
+});
+
+// favorite button to open modal
+favBtn.addEventListener('click',
+    function () {
+        modal2.style.display = 'block'
+    });
+
+// modal event listener to close favorite modal
+close2.addEventListener('click', function () {
+    modal2.style.display = 'none'
+});

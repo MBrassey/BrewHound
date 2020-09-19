@@ -116,11 +116,10 @@
                 <div class="tile is-vertical is-9">
                     <div class="tile">
                         <div class="tile is-parent is-vertical">
-                            <article class="tile is-child box">
+                            <article class="tile is-child box" id="fav-listener">
                                 <p class="title div-headers" id="current-city">Current City</p>
                                 <p class="subtitle">Your local breweries! Select one for more information!</p>
                                 <div id="card-container">
-                                    <!-- card creation start -->
                                     <div class="card">
                                         <div class="card-content">
                                             <p class="subtitle mt-5">
@@ -129,11 +128,9 @@
                                         </div>
                                         <footer class="card-footer">
                                             <p class="card-footer-item brew-name">Brewery Type</p>
-                                            <!-- If we can implement a favorites -->
-                                            <a href="#" class="card-footer-item">Save</a>
+                                            <a href="#" class="card-footer-item save-btn">Save</a>
                                         </footer>
                                     </div>
-                                    <!-- card creation -->
                                 </div>
                             </article>
                             <article class="tile is-child box is-hidden-mobile" id="drafts">
@@ -184,7 +181,7 @@
             <header class="modal-card-head" style="background-color: #4a4a4a;">
               <p class="modal-card-title div-headers">Your Favourite Breweries!</p>
             </header>
-            <section class="modal-card-body" id="saved">
+            <section class="modal-card-body" id="fav-brew">
               
             </section>
             <footer class="modal-card-foot">

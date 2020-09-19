@@ -3,7 +3,7 @@ var searchFormEl = document.querySelector("#input-group");
 var cities = {};
 
 var breweryName = function(fullAddr) {
-    console.log(fullAddr);
+    // console.log(fullAddr);
     $("#breweryName").empty();
     $("#breweryName").append(fullAddr);
 }
