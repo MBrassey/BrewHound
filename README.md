@@ -4,7 +4,7 @@
 > Our purpose and promise? We take the hassle out of searching and comparing breweries and we handle that, and we promise to give you
 > the best and local results to get you on your way!
 
-[<p align="center"><img src="assets/images/Application-screenshot.png">](https://github.com/ryanabrown14/brew-hound/blob/test/assets/images/Application-screenshot.png)
+[<p align="center"><img src="assets/images/Application-screenshot.png">](https://ryanabrown14.github.io/brew-hound/)
 
 ### Check it out! - https://ryanabrown14.github.io/brew-hound/
 
