@@ -8,7 +8,7 @@
 
 ### Check it out! - https://ryanabrown14.github.io/brew-hound/
 
-#### Brought to you by the following creators:
+### Brought to you by the following creators:
 
 #### Matthew Ondrovic
 > Creator of implementing APIs and handling DOM.
