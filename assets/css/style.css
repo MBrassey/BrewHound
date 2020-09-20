@@ -1,0 +1,202 @@
+:root {
+    --header-color: rgba(246, 193, 1);
+    --subHeader-color: rgba(236, 157, 0);
+    --text-color: rgba(223, 141, 3);
+    --bg-color: #4a4a4a;
+}
+
+a {
+    color: var(--header-color);
+}
+
+footer {
+    text-align: center;
+    justify-content: space-between;
+}
+
+.title {
+    width: 100%;
+    font-size: 36px;
+    font-family: 'Questrial', sans-serif;
+}
+
+.subtitle {
+    color: var(--text-color);
+}
+
+.placeHolder {
+    background-color: var(--Stone);
+    margin-top: 20px;
+    min-height: 50px;
+    min-width: 100%;
+    border: 2px dashed var(--Azure);
+    border-radius: 12px;
+}
+
+.bottom-trash {
+    opacity: 0;
+    color: var(--header-color);
+    font-size: 7rem;
+    font-family: "Staatliches", sans-serif;
+    background-color: none;
+    padding-top: 40px;
+    padding-left: 40%;
+
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+    -ms-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in;
+}
+
+.bottom-trash-drag {
+    opacity: 1;
+}
+
+.bottom-trash-active {
+    color: var(--text-color);
+}
+
+.card {
+    background-color: var(--bg-color);
+}
+
+.brew-name {
+    color: var(--header-color);
+}
+
+.div-headers {
+    color: var(--subHeader-color);
+}
+
+.modal-background {
+    color: var(--header-color);
+}
+
+.cityButton, .button {
+    width: 96%;
+    padding: 0px;
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+#breweryName {
+    font-size: 1.4rem;
+    color: var(--bg-color);
+}
+
+#breweryAddy {
+    font-size: 1.2rem;
+    color: var(--bg-color);
+}
+
+#company-name {
+    font-family: 'Allura', cursive;
+    color: var(--header-color);
+    font-size: 3.3rem;
+}
+
+#slogan {
+    color: var(--subHeader-color);
+    font-size: 1.6rem;
+}
+
+#input-header {
+    color: var(--subHeader-color);
+    font-size: 1.5rem;
+}
+
+#map {
+    width: 100%;
+    height: 68vh;
+}
+
+#beerIcon {
+    color: var(--subHeader-color);
+    font-size: 2.7rem;
+    font-family: 'Allura', cursive;
+}
+
+@media screen and (max-width: 1200px) {
+    footer {
+        width: 100%;
+    }
+
+    .subtitle {
+        width: 100%;
+    }
+
+    .modal {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .bottom-trash {
+        font-size: 4rem;
+        padding-top: 0%;
+        padding-left: 46%;
+    }
+
+    .card-footer-item {
+        width: 100%;
+    }
+
+    .has-icons-left {
+        width: 100%;
+    }
+
+    #input-header {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    #state-name {
+        width: 100%;
+    }
+
+    #search-btn {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 765px) {
+    p {
+        text-align: center;
+    }
+
+    .modal {
+        padding-right: 40px;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+    #input-header {
+        font-size: 2rem;
+    }
+
+    #slogan {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 505px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .bottom-trash {
+        font-size: 4rem;
+        padding-top: 0%;
+        padding-left: 42%;
+    }
+
+    #input-header, #breweryURL {
+        font-size: 1.3rem;
+    }
+}

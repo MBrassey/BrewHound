@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <title>Brew-Hound</title>
+    </head>
+
+    <body>
+        <section class="hero is-dark">
+            <header class="navbar">
+              <div class="navbar-menu level is-mobile">
+                <div class="level-left"></div>
+                <div class="level-right">
+                  <a class="navbar-item favorite" id="">Favorites</a>
+                </div>
+                </div>
+                </header>
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title" id="company-name"><i id="beerIcon" class="fas fa-beer"></i> Brew Hound</h1>
+                    <h2 class="subtitle" id="slogan">
+                        Man's best friend!
+                        </h2>
+                </div>
+            </div>
+        </section>
+        <div class="hero tile is-ancestor is-fullheight">
+            <div class="tile is-parent">
+                <article class="tile is-child notification box is-3">
+                    <div class="content">
+                        <p class="title" id="input-header">Find the best brew, near you!</p>
+                        <form id="input-group">
+                            <div class="field">
+                                <p class="control is-fullwidth">
+                                    <input class="input" id="city-name" type="text" placeholder="Search a City" />
+                                </p>
+
+                                <div class="control has-icons-left">
+                                    <div class="select is-fullwidth">
+                                        <select id="state-name">
+                                            <option value="" disabled selected>Select a State</option>
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alaska">Alaska</option>
+                                            <option value="Arizona">Arizona</option>
+                                            <option value="Arkansas">Arkansas</option>
+                                            <option value="California">California</option>
+                                            <option value="Colorado">Colorado</option>
+                                            <option value="Connecticut">Connecticut</option>
+                                            <option value="Delaware">Delaware</option>
+                                            <option value="District_of_Columbia">District Of Columbia</option>
+                                            <option value="Florida">Florida</option>
+                                            <option value="Georgia">Georgia</option>
+                                            <option value="Hawaii">Hawaii</option>
+                                            <option value="Idaho">Idaho</option>
+                                            <option value="Illinois">Illinois</option>
+                                            <option value="Indiana">Indiana</option>
+                                            <option value="Iowa">Iowa</option>
+                                            <option value="Kansas">Kansas</option>
+                                            <option value="Kentucky">Kentucky</option>
+                                            <option value="Louisiana">Louisiana</option>
+                                            <option value="Maine">Maine</option>
+                                            <option value="Maryland">Maryland</option>
+                                            <option value="Massachusetts">Massachusetts</option>
+                                            <option value="Michigan">Michigan</option>
+                                            <option value="Minnesota">Minnesota</option>
+                                            <option value="Mississippi">Mississippi</option>
+                                            <option value="Missouri">Missouri</option>
+                                            <option value="Montana">Montana</option>
+                                            <option value="Nebraska">Nebraska</option>
+                                            <option value="Nevada">Nevada</option>
+                                            <option value="New_Hampshire">New Hampshire</option>
+                                            <option value="New_Jersey">New Jersey</option>
+                                            <option value="New_Mexico">New Mexico</option>
+                                            <option value="New_York">New York</option>
+                                            <option value="North_Carolina">North Carolina</option>
+                                            <option value="North_Dakota">North Dakota</option>
+                                            <option value="Ohio">Ohio</option>
+                                            <option value="Oklahoma">Oklahoma</option>
+                                            <option value="Oregon">Oregon</option>
+                                            <option value="Pennsylvania">Pennsylvania</option>
+                                            <option value="Rhode_Island">Rhode Island</option>
+                                            <option value="South_Carolina">South Carolina</option>
+                                            <option value="South_Dakota">South Dakota</option>
+                                            <option value="Tennessee">Tennessee</option>
+                                            <option value="Texas">Texas</option>
+                                            <option value="Utah">Utah</option>
+                                            <option value="Vermont">Vermont</option>
+                                            <option value="Virginia">Virginia</option>
+                                            <option value="Washington">Washington</option>
+                                            <option value="West_virginia">West Virginia</option>
+                                            <option value="Wisconsin">Wisconsin</option>
+                                            <option value="Wyoming">Wyoming</option>
+                                        </select>
+                                    </div>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-globe"></i>
+                                    </span>
+                                </div>
+
+                                <button class="button is-outlined is-dark mt-3" id="search-btn" type="submit">Search</button>
+                            </div>
+                        </form>
+                        <div id="cityContainer" class="content mt-3"></div>
+                        <div id="trash" class="mt-auto overflow-hidden">
+                            <div class="w-100 p-3 text-center bottom-trash"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="tile is-vertical is-9">
+                    <div class="tile">
+                        <div class="tile is-parent is-vertical">
+                            <article class="tile is-child box" id="fav-listener">
+                                <p class="title div-headers" id="current-city">Current City</p>
+                                <p class="subtitle">Your local breweries! Select one for more information!</p>
+                                <div id="card-container">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <p class="subtitle mt-5">
+                                                Brewery Name
+                                            </p>
+                                        </div>
+                                        <footer class="card-footer">
+                                            <p class="card-footer-item brew-name">Brewery Type</p>
+                                            <a href="#" class="card-footer-item save-btn">Save</a>
+                                        </footer>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="tile is-child box" id="drafts">
+                                <p class="title div-headers">Resources:</p>
+                                <p class="subtitle"></p>
+                                <div id="brewerySite"></div>
+                            </article>
+                        </div>
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                <p class="title div-headers">Map</p>
+                                <p id="breweryName"></p>
+                                <p id="breweryAddy"></p>
+                                <p class="subtitle">Find the new spot here <i class="fas fa-arrow-down" style="color: rgba(246, 193, 1);"></i></p>
+                                <div id="map"></div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="hero is-dark">
+            <div>
+                <p>
+                    <i class="fas fa-beer" style="color: rgba(246, 193, 1);"></i>
+                    Created by, Matthew Ondrovic, Matthew Brassey, Ryan Brown, Taylor Stern
+                    <i class="fas fa-beer" style="color: rgba(246, 193, 1);"></i>
+                </p>
+            </div>
+        </footer>
+
+        <div class="modal modal-1">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head" style="background-color: #4a4a4a;">
+              <p class="modal-card-title div-headers">Alert!</p>
+            </header>
+            <section class="modal-card-body" >
+              <p class="subtitle">Please Select Both a City and State! </p>
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button close is-outlined is-dark">OK!</button>
+            </footer>
+          </div>
+        </div>
+
+        <div class="modal modal-2">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head" style="background-color: #4a4a4a;">
+              <p class="modal-card-title div-headers">Your Favourite Breweries!</p>
+            </header>
+            <section class="modal-card-body" id="fav-brew">
+              
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button close-2 is-outlined is-dark">Close</button>
+            </footer>
+          </div>
+        </div>
+
+        
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBR_rkYBuZ6RUGs0OX2MmIWI7tTTEeAtY"></script>
+        <script src="./assets/scripts/script.js"></script>
+        <script src="./assets/scripts/apiFetch.js"></script>
+    </body>
+</html>
