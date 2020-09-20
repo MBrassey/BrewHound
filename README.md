@@ -14,6 +14,7 @@
 > Creator of implementing APIs and handling DOM.
 #### Matthew Brassey
 > Creator of saved searches to LocalStorage, draggable/sortable/clickable/deletable Buttons, trash can Animation & Site Responsiveness. The "Resources" & above map data functionality. 
+[<p align="right"><img src="assets/images/contributor.png">](https://github.com/ryanabrown14/brew-hound/pulse)
 #### Ryan Brown
 > Creator of implementing BULMA into our HTML, styling the dynamically created elements, creating event listeners, creating slideshow format.
 #### Taylor Stern
