@@ -61,6 +61,14 @@ footer {
     background-color: var(--bg-color);
 }
 
+.card-content:hover{
+    cursor: pointer;
+}
+
+.brew-name:hover{
+    cursor: pointer;
+}
+
 .brew-name {
     color: var(--header-color);
 }
