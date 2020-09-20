@@ -9,7 +9,12 @@
 ### Check it out! - https://ryanabrown14.github.io/brew-hound/
 
 #### Brought to you by the following creators:
-> Matthew Ondrovic, creator of implementing APIs and handling DOM.
-> Matthew Brassey, creator of saved searches to LocalStorage, draggable/sortable/clickable/deletable Buttons, trash can Animation & Site Responsiveness.
-> Ryan Brown, creator of implementing BULMA into our HTML, styling the dynamically created elements, creating event listeners, creating slideshow format.
-> Taylor Stern, creator of broad CSS styling, other visual touch-ups, the README file, and editing slideshow.
+
+#### Matthew Ondrovic
+> Creator of implementing APIs and handling DOM.
+#### Matthew Brassey
+> Creator of saved searches to LocalStorage, draggable/sortable/clickable/deletable Buttons, trash can Animation & Site Responsiveness.
+#### Ryan Brown
+> Creator of implementing BULMA into our HTML, styling the dynamically created elements, creating event listeners, creating slideshow format.
+#### Taylor Stern
+> Creator of broad CSS styling, other visual touch-ups, the README file, and editing slideshow.
