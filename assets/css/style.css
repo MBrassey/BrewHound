@@ -195,7 +195,7 @@ footer {
         padding-left: 42%;
     }
 
-    #input-header {
+    #input-header, #breweryURL {
         font-size: 1.3rem;
     }
 }

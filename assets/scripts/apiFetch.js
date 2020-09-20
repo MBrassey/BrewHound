@@ -86,6 +86,7 @@ function showMap(event) {
         var dataLat = parseFloat(event.target.closest(".card").getAttribute("data-lat"));
         var dataLon = parseFloat(event.target.closest(".card").getAttribute("data-lon"));
         var dataSite = event.target.closest(".card").getAttribute("data-site");
+        dataSiteTrim = dataSite.substring(dataSite.indexOf("w"));
         var dataName = event.target.closest(".card").getAttribute("data-name");
         var dataAddr = event.target.closest(".card").getAttribute("data-addr");
         var fullAddr = dataAddr + ", " + city + ", " + state;
@@ -116,7 +117,7 @@ function showMap(event) {
         } else {
             initMap(dataLat, dataLon);
             $("#brewerySite").empty();
-            $("#brewerySite").append('<div class="button is-large is-fullwidth mt-3"><a href="' + dataSite + '"><span class="breweryURL">' + dataSite + "</span></a></div>");
+            $("#brewerySite").append('<div class="button is-large is-fullwidth mt-3"><a href="' + dataSite + '"><span id="breweryURL">' + dataSiteTrim + "</span></a></div>");
             $("#breweryName").empty();
             $("#breweryName").append(dataName);
             $("#breweryAddy").empty();
