@@ -183,6 +183,7 @@ function initMap(latitude, longitude) {
         center: { lat: latitude, lng: longitude },
         zoom: 18,
     });
+
 }
 
 // submit handler to start main script body
@@ -220,9 +221,21 @@ var formSubmitHandler = function (event) {
 
 // ----- EVENT LISTENER START -----
 
+// event listener to load content on page load
+
+document.addEventListener("DOMContentLoaded", favoriteCall)
+
 // event listener to run on submit click
 inputEL.addEventListener("submit", formSubmitHandler);
+
+// event listener to show map when item is clicked
 cardContainerEl.addEventListener("click", showMap);
+
+// event listener to show map when favorite is clicked
+modal2Body.addEventListener("click", function(event){
+    showMap(event);
+    modal2.style.display ="none";
+})
 
 // event listener to save favorites
 cardContainerEl.addEventListener("click", favoriteSave);
