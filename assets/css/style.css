@@ -16,7 +16,8 @@ footer {
 
 .title {
     width: 100%;
-    font-size: 3rem;
+    font-size: 36px;
+    font-family: 'Questrial', sans-serif;
 }
 
 .subtitle {
@@ -80,6 +81,11 @@ footer {
 }
 
 #breweryName {
+    font-size: 1.4rem;
+    color: var(--bg-color);
+}
+
+#breweryAddy {
     font-size: 1.2rem;
     color: var(--bg-color);
 }
@@ -181,7 +187,7 @@ footer {
 }
 @media screen and (max-width: 505px) {
     .title {
-        font-size: 2.6rem;
+        font-size: 2.5rem;
     }
 
     .bottom-trash {
@@ -190,7 +196,7 @@ footer {
         padding-left: 42%;
     }
 
-    #input-header {
+    #input-header, #breweryURL {
         font-size: 1.3rem;
     }
 }

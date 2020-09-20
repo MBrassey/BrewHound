@@ -2,12 +2,6 @@ var todaysDate = moment().format("L");
 var searchFormEl = document.querySelector("#input-group");
 var cities = {};
 
-var breweryName = function(fullAddr) {
-    // console.log(fullAddr);
-    $("#breweryName").empty();
-    $("#breweryName").append(fullAddr);
-}
-
 var smoothScroll = function() {
         $('html, body').animate({
             scrollTop: $("#map").offset().top
