@@ -6,7 +6,7 @@
 
 [<p align="center"><img src="assets/images/Application-screenshot.png">](https://ryanabrown14.github.io/brew-hound/)
 
-### Check it out! - https://ryanabrown14.github.io/brew-hound/
+### - Check it out! - https://ryanabrown14.github.io/brew-hound/
 
 ### Brought to you by the following creators:
 
