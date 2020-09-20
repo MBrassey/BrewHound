@@ -86,7 +86,7 @@ function showMap(event) {
         var dataLat = parseFloat(event.target.closest(".card").getAttribute("data-lat"));
         var dataLon = parseFloat(event.target.closest(".card").getAttribute("data-lon"));
         var dataSite = event.target.closest(".card").getAttribute("data-site");
-        dataSiteTrim = dataSite.substring(dataSite.indexOf("w"));
+        var dataSiteTrim = dataSite.substring(dataSite.indexOf("w"));
         var dataName = event.target.closest(".card").getAttribute("data-name");
         var dataAddr = event.target.closest(".card").getAttribute("data-addr");
         var fullAddr = dataAddr + ", " + city + ", " + state;
@@ -94,7 +94,9 @@ function showMap(event) {
         // Update Resources & Map Sections
         $("#breweryURL").empty();
         $("#brewerySite").empty();
-        $("#brewerySite").append('<div class="button is-large is-fullwidth mt-3"><a href="' + dataSite + '"><span id="breweryURL">' + dataSiteTrim + "</span></a></div>");
+        if (dataSite != "undefined"){
+            $("#brewerySite").append('<div class="button is-large is-fullwidth mt-3"><a href="' + dataSite + '"><span id="breweryURL">' + dataSiteTrim + "</span></a></div>");
+        }
         $("#breweryName").empty();
         $("#breweryName").append(dataName);
         $("#breweryAddy").empty();
@@ -142,8 +144,8 @@ function favoriteSave(e) {
             breweryLat: e.target.closest(".card").getAttribute("data-lat"),
             breweryLon: e.target.closest(".card").getAttribute("data-lon"),
             breweryAddr: e.target.closest(".card").getAttribute("data-addr"),
+            breweryWeb: e.target.closest(".card").getAttribute("data-site"),
         };
-
         favoritesArr.push(cardElements);
 
         let filteredList = [...new Map(favoritesArr.map((obj) => [`${obj.breweryName}`, obj])).values()];
@@ -155,6 +157,7 @@ function favoriteSave(e) {
 
 // calls favorites to modal
 function favoriteCall() {
+    modal2Body.innerHTML = "";
     if (localStorage.getItem("cardData")) {
         favoritesArr = JSON.parse(localStorage.getItem("cardData"));
 
@@ -166,6 +169,7 @@ function favoriteCall() {
             favoriteCard.setAttribute("data-lat", favoritesArr[i].breweryLat);
             favoriteCard.setAttribute("data-lon", favoritesArr[i].breweryLon);
             favoriteCard.setAttribute("data-addr", favoritesArr[i].breweryAddr);
+            favoriteCard.setAttribute("data-site", favoritesArr[i].breweryWeb);
 
             var favoriteContent = document.createElement("div");
             favoriteContent.className = "card-content";
@@ -244,10 +248,10 @@ inputEL.addEventListener("submit", formSubmitHandler);
 cardContainerEl.addEventListener("click", showMap);
 
 // event listener to show map when favorite is clicked
-modal2Body.addEventListener("click", function(event){
-    showMap(event);
-    modal2.style.display ="none";
-})
+modal2Body.addEventListener("click", e => {
+    showMap(e);
+    modal.style.display = "none";
+});
 
 // event listener to save favorites
 cardContainerEl.addEventListener("click", favoriteSave);
