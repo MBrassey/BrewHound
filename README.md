@@ -1,6 +1,6 @@
 ## Brew Hound
 
-We are a website that allows users to easily find local breweries in your area! Simple as that. Our purpose and promise? We take the hassle out of searching and comparing breweries - we handle that, and we promise to give you the best and local results to get you on your way!
+We are a website that allows users to easily find local breweries in your area! Simple as that. Our purpose and promise? We take the hassle out of searching and comparing breweries - we handle that, and we promise to give you the best and local results to get you on your way! See the full MERN stack version of this application here: [Brewhound-2](https://github.com/MBrassey/brewhound-2)!
 
 ![licensebadge](https://img.shields.io/badge/license-CC0_1.0_Universal-blue)
 
